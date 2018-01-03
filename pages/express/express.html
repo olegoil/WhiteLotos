@@ -1,0 +1,52 @@
+<ion-header no-border>
+  <ion-navbar color="viol">
+    <ion-title>
+      ЭКСПРЕСС-ЗАПИСЬ
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="backviolet" style="margin:0 auto;min-height:100%;">
+    <ion-grid no-padding *ngIf="expresses?.length>0">
+      <ion-row>
+        <ion-col>
+            <h2 class="whitey">&nbsp;</h2>
+        </ion-col>
+      </ion-row>
+
+      <div *ngFor="let express of expresses; let i=index">
+        <ion-row justify-content-around margin-bottom *ngIf="i % 2 === 0">
+          <ion-col col-5 class="card-background-page" (click)="selExpress(expresses[i].in_id, expresses[i])" *ngIf="i < expresses.length">
+            <img src="assets/img/placeholder.png"/>
+            <div [ngClass]="{'doublelinesel': selexpress == expresses[i].in_id, 'card-title': 1, 'orange': selexpress == expresses[i].in_id, 'doubleline': selexpress != expresses[i].in_id, 'whitey': selexpress != expresses[i].in_id}">
+              <div class="centering" text-uppercase>
+                  <ion-icon [ngClass]="{'iconsel': selexpress == expresses[i].in_id}" name="{{ expresses[i].menue_icon }}"></ion-icon>
+                  {{ expresses[i].menue_name }}
+              </div>
+            </div>
+          </ion-col>
+          <ion-col col-5 class="card-background-page" (click)="selExpress(expresses[i+1].in_id, expresses[i+1])" *ngIf="i + 1 < expresses.length">
+            <img src="assets/img/placeholder.png"/>
+            <div [ngClass]="{'doublelinesel': selexpress == expresses[i+1].in_id, 'card-title': 1, 'orange': selexpress == expresses[i+1].in_id, 'doubleline': selexpress != expresses[i+1].in_id, 'whitey': selexpress != expresses[i+1].in_id}">
+              <div class="centering" text-uppercase>
+                <ion-icon [ngClass]="{'iconsel': selexpress == expresses[i+1].in_id}" name="{{ expresses[i+1].menue_icon }}"></ion-icon>
+                {{ expresses[i+1].menue_name }}
+              </div>
+            </div>
+          </ion-col>
+          </ion-row>
+      </div>
+
+      <p *ngIf="selexpress || selexpress==0" style="margin-bottom:50px;">&nbsp;</p>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer *ngIf="selexpress || selexpress==0" color="goldy">
+    <ion-toolbar color="goldy">
+        <button ion-button full color="goldy" (click)="goExpressChoice()">ЗАПИСАТЬСЯ</button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-title>Предъявите код</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content no-padding>
+  
+  <ion-card no-margin no-border *ngIf="createdCode" style="width:100%;box-shadow:none;">
+    <ngx-qrcode [qrc-value]="createdCode" qrc-errorCorrectionLevel="Q"></ngx-qrcode>
+    <ion-card-content>
+      <!-- <p>Value: {{ createdCode }}</p> -->
+      <ion-grid>
+        <!-- <ion-row>
+          <ion-col>
+            <h1 style="font-size:36px;text-align:center;">{{realexpression}}</h1>
+            <h3 style="font-size:10px;text-align:center;">руб</h3>
+          </ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-col text-center>
+            <button ion-button block color="viol" (click)="reviewAsk()">готово</button>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row>
+          <ion-col text-center>
+            <button ion-button clear icon-left color="dark" (click)="goBack()"><ion-icon name="arrow-back"></ion-icon>изменить сумму</button>
+          </ion-col>
+        </ion-row> -->
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

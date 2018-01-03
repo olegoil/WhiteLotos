@@ -1,0 +1,45 @@
+page-intro {
+    ion-content {
+        height: 100% !important;
+        background-image: url('../assets/img/face.jpg');
+        background-position:center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    ion-content div.scroll-content {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+    ion-toolbar.subheader {
+        padding:0;
+        background-color: rgba(0,0,0,0);
+    }
+
+    ion-header ion-toolbar .toolbar-content {
+        background: none;
+    }
+
+    ion-header ion-toolbar .toolbar-background {
+        background: none;
+    }
+    ion-grid {
+        height: 100%;
+        justify-content: center;
+    }
+    .toolbar-background {
+        background-color: rgba(0,0,0,0);
+    }
+    .violback {
+        background-color: rgba(82,73,118,0.9);
+    }
+    .violback img {
+        margin: 20px auto;
+        width: 80%;
+    }
+    .backtransparent {
+        text-align: center;
+        background: none;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+}

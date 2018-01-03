@@ -1,0 +1,139 @@
+<ion-header no-border>
+  <ion-navbar color="viol">
+    <ion-title>
+      Минск
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar class="subheader">
+    <ion-slides class="slidertwo" #slidesTwo>
+      <ion-slide class="backtransparent" *ngFor="let dat of dates" [ngClass]="{'doublelineoran':dat.dat.getDate()==takedate.getDate()}" (click)="toggleDate(dat.dat)">
+        <ion-grid no-padding style="height:100%;">
+          <ion-row justify-content-around>
+            <ion-col col-12 class="card-background-page">
+                <div class="card-title">
+                  <div class="centering">
+                    {{ dat.dat | date: 'dd' }}<br/>{{ dat.dat | date: 'EEE' }}
+                  </div>
+                </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+    </ion-slides>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides class="sliderone" #slidesOne style="min-height:47vw;max-height:25vh;margin-bottom:10px;" (ionSlideWillChange)="officeChanged()">
+    <ion-slide class="backtransparent" *ngFor="let office of offices" [ngClass]="{'opacityshrink':office.in_id!=currentIndex, 'opacityfull':office.in_id==currentIndex}">
+      <ion-grid no-padding style="height:100%;">
+        <ion-row justify-content-around>
+            <ion-col col-12 class="card-background-page" [ngStyle]="{'background-image':'url('+checkPicComp(office.office_logo)+')','background-size':'100%','background-repeat':'no-repeat','background-position':'center center', 'width':'45vw','height':'45vw'}">
+              <div class="card-title everyline" style="background:none;">
+                <!-- <div class="centering"> -->
+                  <!-- <ion-icon color="light" name="custom_stones"></ion-icon>
+                  <br/>SPA
+                  <br/>РИТУАЛ -->
+                <!-- </div> -->
+              </div>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card class="backviolet" style="margin:0 auto;border-radius:0px;border:none;">
+    <ion-grid no-padding>
+      
+      <ion-row class="violback" justify-content-center>
+        <ion-col col-12>
+          <ion-slides #slidesFour>
+            <ion-slide *ngFor="let office of offices">
+              <p class="aligncenter">
+                <img src="assets/img/logo.png"/>
+              </p>
+              <p *ngIf="office.office_adress" class="aligncenter" justify-content-center>
+                <button ion-button icon-left clear class="infowhite"><ion-icon name="pin"></ion-icon> {{ office.office_adress }}</button>
+                <br/>
+                <span class="violback aligncenter" *ngIf="office.office_tel?.length > 0" justify-content-center>
+                  <!-- <button *ngIf="offices[currentIndex].office_tel[1]" ion-button small clear class="inforange">{{ recalcPhone(offices[currentIndex].office_tel[1]) }}</button> -->
+                  <button *ngFor="let officetel of office.office_tel" ion-button small clear class="inforange">{{ recalcPhone(officetel) }}</button>
+                  <br/>
+                  <button *ngFor="let bushour of recalcBusHours(office.office_bus_hours)" ion-button small clear class="inforange">{{ bushour.day }} {{ bushour.times }}</button>
+                </span>
+              </p>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+      </ion-row>
+
+      <div *ngFor="let spa of spas; let i=index">
+        <ion-row justify-content-around margin-bottom *ngIf="i % 2 === 0">
+          <ion-col col-5 class="card-background-page" (click)="chooseSpa(spas[i].in_id)" *ngIf="i < spas.length">
+            <img src="assets/img/placeholder.png"/>
+            <div [ngClass]="{'doublelinesel': selspa == spas[i].in_id, 'card-title': 1, 'orange': selspa == spas[i].in_id, 'doubleline': selspa != spas[i].in_id, 'whitey': selspa != spas[i].in_id}">
+              <div class="centering" text-uppercase>
+                  <ion-icon [ngClass]="{'iconsel': selspa == spas[i].in_id}" name="{{ spas[i].menue_icon }}"></ion-icon>
+                  {{ spas[i].menue_name }}
+              </div>
+            </div>
+          </ion-col>
+          <ion-col col-5 class="card-background-page" (click)="chooseSpa(spas[i+1].in_id)" *ngIf="i + 1 < spas.length">
+            <img src="assets/img/placeholder.png"/>
+            <div [ngClass]="{'doublelinesel': selspa == spas[i+1].in_id, 'card-title': 1, 'orange': selspa == spas[i+1].in_id, 'doubleline': selspa != spas[i+1].in_id, 'whitey': selspa != spas[i+1].in_id}">
+              <div class="centering" text-uppercase>
+                <ion-icon [ngClass]="{'iconsel': selspa == spas[i+1].in_id}" name="{{ spas[i+1].menue_icon }}"></ion-icon>
+                {{ spas[i+1].menue_name }}
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+
+    </ion-grid>
+  </ion-card>
+
+  <ion-card *ngIf="statusmessage && !selspa && selspa != 0" class="backtransparent">
+    <ion-card-content>
+      <span text-wrap style="color:#f00;font-size:1.2em;">{{ statusmessage }}</span>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-slides class="sliderthree" #slidesThree style="height:30%;margin-top:10px;" (ionSlideDidChange)="masterChanged()" (ionSlideTap)="masterDetails()">
+    <ion-slide class="backtransparent" *ngFor="let master of masters" [ngClass]="{'opacityshrink':master.id!=masterid, 'opacityfull':master.id==masterid}">
+      <ion-grid no-padding style="height:100%;">
+        <ion-row justify-content-center>
+            <ion-col *ngIf="master.id=='0'" col-12 class="card-background-page backviolet" [ngStyle]="{'background-image':'url('+master.img+')','background-size':'50%','background-repeat':'no-repeat','background-position':'center center'}">
+              <div class="card-title doubleline whitey">
+              </div>
+            </ion-col>
+            <ion-col *ngIf="master.id!='0'" col-12 class="card-background-page backviolet" [ngStyle]="{'background-image':'url('+master.img+')','background-size':'cover','background-repeat':'no-repeat','background-position':'center center'}">
+              <div class="card-title oneline whitey">
+              </div>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card class="backtransparent">
+    <button ion-button clear color="viol">{{ mastername }}</button>
+  </ion-card>
+
+  <ion-card class="backtransparent" justify-content-around>
+    <button style="border-radius:0;" margin-right ion-button small [outline]="work != selwork" color="viol" *ngFor="let work of masterwork" (click)="selWork(work)">{{ work | timepoints }}</button>
+  </ion-card> -->
+
+  <ion-card style="width:100%;padding:0;" *ngIf="selspa >= 0" class="backtransparent" no-padding no-margin justify-content-center>
+    <ion-card-content>
+
+      <button ion-button block color="viol" (click)="entryRequest()">ЗАПИСАТЬСЯ</button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <br/>
+
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-menu [content]="mycontent">
+    <ion-content>
+        <ion-list>
+            <ion-item menuClose>
+                <ion-avatar item-start>
+                        <img src="assets/img/logo.png">
+                </ion-avatar>
+                <h2>Белый Лотос</h2>
+                <h3>г.Минск</h3>
+            </ion-item>
+            <button ion-item menuClose (click)="goIndex()">
+                Главная
+            </button>
+            <button ion-item menuClose (click)="goHome()">
+                Карта клиента
+            </button>
+            <button ion-item menuClose (click)="goNews()">
+                Новости
+            </button>
+            <button ion-item menuClose (click)="goProfile()">
+                Личный кабинет
+            </button>
+            <button ion-item menuClose (click)="goSurveys()">
+                Опросы
+            </button>
+            <button ion-item menuClose (click)="goSupport()">
+                Техподдержка
+            </button>
+            <button ion-item menuClose (click)="goAbout()">
+                О нас
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->

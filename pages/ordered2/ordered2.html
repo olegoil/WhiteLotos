@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="viol">
+    <ion-title>
+      Вы записались!
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-end color="light" (click)="goToRoots()" style="font-size:20px;">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <div class="violback">
+    <ion-card class="backtransparent">
+      <ion-grid>
+        <ion-row style="margin-bottom:50px;" justify-content-around>
+          <ion-col col-6 class="card-background-page">
+            <img src="assets/img/placeholder.png"/>
+            <div class="card-title everyline">
+              <div class="centering">
+                <h1>{{ dateday }}</h1>
+                <h1>{{ datemonth }}</h1>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row justify-content-around>
+          <ion-col col-6>
+              <h2 class="whitey">Ожидайте звонка!</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="dateplace.length > 0" justify-content-around>
+          <ion-col col-12 text-center>
+            <button ion-button icon-left clear class="infowhite"><ion-icon name="pin"></ion-icon> {{ dateplace[0].office_adress }}</button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="dateplace.length > 0" justify-content-around>
+          <ion-col text-center>
+            <button *ngIf="dateplace[0].office_tel[0]" ion-button small clear class="inforange">{{ recalcPhone(dateplace[0].office_tel[0]) }}</button>
+            <button *ngIf="dateplace[0].office_tel[1]" ion-button small clear class="inforange">{{ recalcPhone(dateplace[0].office_tel[1]) }}</button>
+            <button *ngIf="dateplace[0].office_tel[2]" ion-button small clear class="inforange">{{ recalcPhone(dateplace[0].office_tel[2]) }}</button>
+            <button *ngIf="dateplace[0].office_tel[3]" ion-button small clear class="inforange">{{ recalcPhone(dateplace[0].office_tel[3]) }}</button>
+            <button *ngIf="dateplace[0].office_tel[4]" ion-button small clear class="inforange">{{ recalcPhone(dateplace[0].office_tel[4]) }}</button>
+            <br/>
+            <button *ngFor="let bushour of recalcBusHours(dateplace[0].office_bus_hours)" ion-button small clear class="inforange">{{ bushour.day }} {{ bushour.times }}</button>
+          </ion-col>
+        </ion-row>
+        <ion-row justify-content-around>
+          <!-- <button ion-button outline color="light" (click)="goToRoots()">Редактировать запись</button> -->
+          <button ion-button outline color="light" (click)="goToRoots()">ОК</button>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+</ion-content>
+  

@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar color="viols">
+    <ion-title>Ритуалы</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding class="card-background-page">
+
+  <ion-card *ngFor="let ritual of rituals" (click)="goRitualDetails(ritual)">
+    <img src="{{ checkPic(ritual.menue_pic) }}"/>
+    <div class="card-title textshadow" [innerHtml]="ritual.menue_name"></div>
+    <div class="card-subtitle textshadow">
+      <ion-row>
+        <ion-col>
+          от {{ priceConvert(ritual.menue_cost) }} BYN
+          <br/>
+          <ion-note>цена</ion-note>
+        </ion-col>
+        <ion-col>
+          {{ ritual.menue_interval }}
+          <br/>
+          <ion-note>продолжительность сеанса</ion-note>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-card>
+
+</ion-content>

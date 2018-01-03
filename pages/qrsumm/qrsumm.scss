@@ -1,0 +1,89 @@
+page-qrsumm {
+
+    .violback {
+        background-color: rgba(82, 73, 118, 0.9) !important;
+    }
+
+    ion-content {
+        padding-top: 0;
+        background-image: url('../assets/img/lotos.jpg');
+        background-position:center center;
+        background-size: auto 100%;
+    }
+
+    ion-card {
+        position: absolute;
+        bottom: 0;
+        height: 80%;
+        margin: 10px 0 0 0 !important;
+        width: 100% !important;
+    }
+
+    ion-grid {
+        height: 100% !important;
+    }
+
+    ion-row {
+        height: 20% !important;
+    }
+
+    ion-row ion-col {
+        height: 100% !important;
+    }
+
+    ion-row ion-col .button {
+        vertical-align: middle;
+        font-size: 32px !important;
+        height: 100% !important;
+        margin:0 !important;
+    }
+
+    .button-ios {
+        height: 100% !important;
+    }
+    
+    .button-md {
+        height: 100% !important;
+    }
+
+    .list2bottom {
+        height: 100% !important;
+        margin: 0 !important;
+    }
+
+    ion-col.bordtop {
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    ion-col.bordtopbottom {
+        border-top: 1px solid rgba(255,255,255,0.2);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    ion-col.bordleftrighttop {
+        border-top: 1px solid rgba(255,255,255,0.2);
+        border-left: 1px solid rgba(255,255,255,0.2);
+        border-right: 1px solid rgba(255,255,255,0.2);
+    }
+
+    ion-col.bordleftrighttopbottom {
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    ion-col .button {
+        font-family: SFUIDT;
+        font-size: 30px;
+    }
+
+    .whitey {
+        color: #fff;
+    }
+
+    .backtransparent {
+        text-align: center;
+        background-color:rgba(0,0,0,0);
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+
+}

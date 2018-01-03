@@ -1,0 +1,145 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-title>Поделиться</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngFor="let share of shares">
+
+    <ion-card class="loyalcardback" *ngIf="share.org_promo_points_owner != '0'">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-4 class="loyaltorch">
+                <div class="leftline"></div>
+                <h1 style="margin:25% auto 25% 25%;">
+                  <ion-icon class="txtshad" name="add"></ion-icon>
+                  <span class="txtshad">{{ share.org_promo_points_owner }}</span>
+                </h1>
+              </ion-col>
+              <ion-col col-8 class="backviol" (click)="goShareDetails()">
+                <ion-card class="inloyalcard">
+                  <div class="rightline"></div>
+                  <ion-card-header no-padding text-wrap color="light">
+                    <h3 class="whitey">ВАМ</h3>
+                  </ion-card-header>
+                  <ion-card-content no-padding text-wrap color="light">
+                    если друг ввел Ваш промокод
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="loyalcardback" *ngIf="share.org_promo_points_involved != '0'">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-4 class="loyaltorch">
+                <div class="leftline"></div>
+                <h1 style="margin:25% auto 25% 25%;">
+                  <ion-icon class="txtshad" name="add"></ion-icon>
+                  <span class="txtshad">{{ share.org_promo_points_involved }}</span>
+                </h1>
+              </ion-col>
+              <ion-col col-8 class="backviol" (click)="goShareDetails()">
+                <ion-card class="inloyalcard">
+                  <div class="rightline"></div>
+                  <ion-card-header no-padding text-wrap color="light">
+                    <h3 class="whitey">ДРУГУ</h3>
+                  </ion-card-header>
+                  <ion-card-content no-padding text-wrap color="light">
+                    который ввел Ваш промокод
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="loyalcardback" *ngIf="share.org_promo_points_scan_owner != '0'">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-4 class="loyaltorch">
+                <div class="leftline"></div>
+                <h1 style="margin:25% auto 25% 25%;">
+                  <ion-icon class="txtshad" name="add"></ion-icon>
+                  <span class="txtshad">{{ share.org_promo_points_scan_owner }}</span>
+                </h1>
+              </ion-col>
+              <ion-col col-8 class="backviol" (click)="goShareDetails()">
+                <ion-card class="inloyalcard">
+                  <div class="rightline"></div>
+                  <ion-card-header no-padding text-wrap color="light">
+                    <h3 class="whitey">ВАМ</h3>
+                  </ion-card-header>
+                  <ion-card-content no-padding text-wrap color="light">
+                    если друг воспользуется нашими услугами
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="loyalcardback" *ngIf="share.org_promo_points_scan_involved != '0'">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-4 class="loyaltorch">
+                <div class="leftline"></div>
+                <h1 style="margin:25% auto 25% 25%;">
+                  <ion-icon class="txtshad" name="add"></ion-icon>
+                  <span class="txtshad">{{ share.org_promo_points_scan_involved }}</span>
+                </h1>
+              </ion-col>
+              <ion-col col-8 class="backviol" (click)="goShareDetails()">
+                <ion-card class="inloyalcard">
+                  <div class="rightline"></div>
+                  <ion-card-header no-padding text-wrap color="light">
+                    <h3 class="whitey">ДРУГУ</h3>
+                  </ion-card-header>
+                  <ion-card-content no-padding text-wrap color="light">
+                    если друг ввел Ваш промокод
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="backtransparent">
+      <ion-grid no-padding>
+        <ion-row justify-content-around>
+          <ion-col col-6>
+            <button ion-button block icon-right color="viol" (click)="goShareDetails()">
+              Поделиться
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+  </div>
+
+</ion-content>

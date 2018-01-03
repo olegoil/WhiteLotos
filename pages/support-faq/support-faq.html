@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-buttons left>
+      <button ion-button icon-end color="light" (click)="toggleMenu()" style="font-size:20px;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Техподдержка</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list no-lines>
+    <div *ngFor="let faq of getfaq">
+      <ion-item text-wrap (click)="toggleGroup(faq)" [class]="{active: isGroupShown(faq)}">
+        <span [innerHtml]="faq.question"></span>
+        <ion-icon item-end name="ios-arrow-forward" *ngIf="!isGroupShown(faq)"></ion-icon>
+        <ion-icon item-end name="ios-arrow-down" *ngIf="isGroupShown(faq)"></ion-icon>
+      </ion-item>
+      <ion-item text-wrap *ngIf="isGroupShown(faq)">
+        <span [innerHtml]="faq.answer"></span>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <button ion-button block large color="viol" (click)="goChat()">Прямой чат <ion-icon name="paper-plane"></ion-icon></button>
+    
+</ion-content>

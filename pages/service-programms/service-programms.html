@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar color="viols">
+    <ion-title>SPA-программы</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content no-padding class="card-background-page">
+
+  <ion-card *ngFor="let programm of programms" (click)="goRitualDetails(programm)">
+    <img src="{{ checkPic(programm.menue_pic) }}"/>
+    <div class="card-title textshadow" [innerHtml]="programm.menue_name"></div>
+    <div class="card-subtitle textshadow">
+      <ion-row>
+        <ion-col>
+          от {{ priceConvert(programm.menue_cost) }} BYN
+          <br/>
+          <ion-note>цена</ion-note>
+        </ion-col>
+        <ion-col>
+          {{ programm.menue_interval }}
+          <br/>
+          <ion-note>продолжительность сеанса</ion-note>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-card>
+
+</ion-content>

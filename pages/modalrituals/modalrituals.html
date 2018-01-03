@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="viol">
+    <!-- <ion-buttons left>
+      <button ion-button (click)="close()" [ngStyle]="{'color': '#fff', 'font-size': '200%'}">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-title>
+      Записаться
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <div class="violback">
+
+    <ion-card no-margin class="backtransparent">
+      <ion-grid no-padding>
+        <ion-row justify-content-around>
+          <ion-col col-12 class="card-background-page" (click)="goRitual()">
+            <div class="card-title doubleline">
+              <div class="centering">
+                <ion-icon color="light" name="custom_cook"></ion-icon>
+                ЗАПИСАТЬСЯ
+                <br/>НА РИТУАЛ
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <br/>
+    <ion-card no-margin class="backtransparent">
+      <ion-grid no-padding>
+        <ion-row justify-content-around>
+          <ion-col col-12 class="card-background-page" (click)="goExpress()">
+            <div class="card-title doubleline">
+              <div class="centering">
+                <ion-icon name="custom_time"></ion-icon>
+                МНЕ ПОВЕЗЕТ!
+                <br/>ЭКСПРЕСС-ЗАПИСЬ
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <br/>
+    <ion-card no-margin class="backtransparent">
+      <ion-grid no-padding>
+        <ion-row justify-content-around>
+          <ion-col col-12 class="card-background-page" (click)="goHistory()">
+            <div class="card-title doubleline">
+              <div class="centering">
+                <ion-icon name="ios-refresh-circle-outline" style="height:10vh;font-size:10vh;"></ion-icon>
+                МНЕ КАК
+                <br/>В ПРОШЛЫЙ РАЗ
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    
+  </div>
+</ion-content>

@@ -1,0 +1,153 @@
+page-modalmasters {
+
+    .violback {
+        background-color: #524976 !important;
+    }
+    ion-content {
+        padding-top: 0;
+        background-position:center center;
+        background-size: auto 100%;
+    }
+    ion-content .scroll-content {
+        margin-top:0px !important;
+    }
+    ion-header ion-navbar div.toolbar-background {
+        border: none !important;
+    }
+    ion-content div.fixed-content {
+        margin-top:0px !important;
+    }
+    
+    ion-header.header {
+        padding-top: 10px;
+        background: transparent;
+    }
+
+    ion-header .toolbar-background {
+        background: transparent;
+    }
+
+    ion-grid {
+        height: 100%;
+    }
+
+    ion-row {
+        height: 100%;
+    }
+    
+    .backviol {
+        background-color: #524976;
+        color: #fff;
+    }
+    .everyline {
+        outline: 2px solid #fff;
+        outline-offset: -10px;
+    }
+    .doubleline {
+        border: 2px solid #fff;
+        outline: 2px solid #fff;
+        outline-offset: -10px;
+    }
+    .backtransparent {
+        text-align: center;
+        background-color:rgba(0,0,0,0);
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+    .backlotos {
+        background-image: url('../assets/img/lotos.jpg');
+        background-position:center center;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        text-align: center;
+        background-color:rgba(0,0,0,0);
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+    .violet {
+        color: #524976;
+    }
+    .whitey {
+        color: #fff;
+    }
+
+    ion-card {
+        text-align: center;
+        width: 100% !important;
+        margin: auto 0 !important;
+    }
+
+    .card-background-page {
+
+        ion-card {
+            position: relative;
+            text-align: center;
+        }
+
+        ion-card img {
+            // width: 100%;
+            height: 100%;
+            margin: 0 auto !important;
+        }
+    
+        .card-title {
+            position: absolute;
+            text-align: center;
+            font-size: 1.0em;
+            font-size: 5vw !important;
+            width: 100%;
+            height: 100%;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .centering {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .centering ion-icon {
+            display: block !important;
+            margin: 0 auto 5px auto !important;
+            height: 10vh;
+        }
+    
+    }
+
+    .content-ios:not([no-bounce]) > .scroll-content::before,
+    .content-ios:not([no-bounce]) > .scroll-content::after {
+      position: absolute;
+      width: 0;
+      height: 0;
+      content: "";
+    }
+
+    .svg-triangle{
+        position: absolute;
+        bottom: 0;
+        right: 10%;
+        margin: 0 auto;
+        width: 40px;
+        height: 30px;    
+    }
+    
+    .svg-triangle polygon {
+        fill:#524976;
+        stroke:#524976;
+        stroke-width:1;
+    }
+
+    .sliderone {
+        height: 100% !important;
+    }
+    
+    .sliderone .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+
+}

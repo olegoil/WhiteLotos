@@ -1,0 +1,13 @@
+page-social {
+    ion-content {
+        background-image: url('../assets/img/pattern.jpg');
+        background-position:center center;
+        background-size: auto 100%;
+    }
+    .backtransparent {
+        text-align: center;
+        background: none;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+}

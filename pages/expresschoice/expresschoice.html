@@ -1,0 +1,51 @@
+<!-- <ion-header no-border>
+  <ion-navbar color="viol">
+    <ion-title>
+      Ближайшее время
+    </ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content no-padding>
+
+  <!-- <ion-toolbar no-border>
+    <ion-segment color="oran">
+      <ion-segment-button *ngFor="let place of places" value="{{place.id}}" [ngClass]="place.id == selplace ? 'segment-activated' : ''" (click)="switchPlace(place.id)">
+          {{ place.name }}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar> -->
+  <ion-card *ngIf="grouped?.length > 0" no-border style="margin:0 auto;">
+    <ion-grid no-padding>
+      <ion-list no-border *ngFor="let group of grouped">
+        <ion-list-header>
+          <h2>{{ group.dayday }}</h2>
+        </ion-list-header>
+        <ion-item text-wrap *ngFor="let master of group.masters">
+          <ion-thumbnail item-start (click)="entryRequest(master, group)">
+            <img src="{{checkPic(master.user_pic)}}">
+          </ion-thumbnail>
+          <h2 (click)="entryRequest(master, group)">
+            <span class="violethalf">Время: </span><span class="whitey">{{ master.user_daytime | timepoints }}</span>
+          </h2>
+          <p (click)="entryRequest(master, group)">
+            <span class="violethalf">{{ master.user_prof }}: </span><span class="whitey">{{ master.user_name }}</span>
+          </p>
+          <button (click)="masterDetails(master, group)" ion-button clear icon-only item-end large color="golds"><ion-icon name="ios-information-circle-outline"></ion-icon></button>
+        </ion-item>
+      </ion-list>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card *ngIf="grouped?.length == 0" class="backtransparent">
+    <ion-card-content>
+      <span text-wrap style="color:#f00;font-size:1.2em;">К сожалению в ближайшее время все занято.</span>
+    </ion-card-content>
+  </ion-card>
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+</ion-content>
+  

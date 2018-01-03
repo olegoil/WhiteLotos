@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="viol">
+    <ion-buttons left>
+      <button ion-button icon-end color="light" (click)="toggleMenu()" style="font-size:20px;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Новости
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    
+  <ion-card class="backtransparent">
+    <ion-grid no-padding>
+      <ion-row justify-content-around margin-bottom *ngFor="let new of news; let i=index">
+        <ion-col col-5 class="card-background-page" (click)="goNewsDetail(news[i])" *ngIf="i < news.length && i % 2 === 0">
+          <img src="{{ checkPic(news[i].news_pic) }}"/>
+          <div class="card-title everyline">
+            <div class="centering" [innerHTML]="news[i].news_name"></div>
+          </div>
+        </ion-col>
+        <ion-col col-5 class="card-background-page" (click)="goNewsDetail(news[i+1])" *ngIf="i + 1 < news.length && i % 2 === 0">
+          <img src="{{ checkPic(news[i+1].news_pic) }}"/>
+          <div class="card-title everyline">
+            <div class="centering" [innerHTML]="news[i+1].news_name"></div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

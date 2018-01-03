@@ -1,0 +1,11 @@
+page-qrcode {
+    ion-card {
+        width: 100% !important;
+    }
+    ion-card ion-card-content {
+        padding-top: 0px !important;
+    }
+    ion-card ion-card-content ion-grid {
+        padding-top: 0px !important;
+    }
+}

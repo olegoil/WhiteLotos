@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="viol">
+    <ion-buttons left>
+      <button ion-button icon-end color="light" (click)="toggleMenu()" style="font-size:20px;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{ abouts[0].title }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+  <ion-card>
+      <img src="assets/img/{{abouts[0].img}}">
+      <ion-card-content>
+        <ion-card-title>
+          {{ abouts[0].title }}
+        </ion-card-title>
+        <p *ngFor="let about of abouts">
+          {{ about.text }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+    
+</ion-content>

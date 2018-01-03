@@ -1,0 +1,69 @@
+<ion-header no-border>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button (click)="close()" color="viol" [ngStyle]="{'font-size': '200%', 'text-shadow': '2px 2px 2px #fff'}">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button (click)="showSchedule()" color="viol" [ngStyle]="{'font-size': '200%', 'text-shadow': '2px 2px 2px #fff'}">
+        <ion-icon name="ios-time-outline"></ion-icon>
+      </button>
+      <button ion-button (click)="showInfo()" color="viol" [ngStyle]="{'font-size': '200%', 'text-shadow': '2px 2px 2px #fff'}">
+        <ion-icon name="ios-information-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content class="violback">
+
+  <ion-grid no-padding>
+    <ion-row justify-content-around>
+      <ion-col [ngStyle]="{'background-image':'url('+checkPic(master.user_pic)+')','background-size':'cover','background-repeat':'no-repeat','background-position':'center center'}" col-12 class="card-background-page">
+        <ion-card class="backtransparent">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-triangle">
+            <polygon points="20,10 0,30 40,30"/>
+          </svg>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-around>
+      <ion-col col-12 class="card-background-page">
+        <ion-slides class="sliderone" #slidesOne>
+          <ion-slide>
+            <ion-card style="width:100%;padding-left:0px;padding-right:0px;margin:0;" class="backtransparent" no-padding>
+              <ion-card-header>
+                <h1 class="whitey">
+                    {{ master.user_name }}
+                </h1>
+                <h2 class="whitey">
+                  {{ master.user_prof }}
+                </h2>
+              </ion-card-header>
+              <ion-card-content>
+                <button style="border-radius:0px;margin:5px;min-width:20vw;" ion-button no-padding outline color="light" *ngFor="let work of master.user_work_time; let i = index" (click)="entryRequest(work, master.unixtime[i])">{{ work | timepoints }}</button>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+          <ion-slide>
+            <ion-card class="backtransparent" no-padding>
+              <ion-card-header>
+                <h1 class="whitey">
+                    {{ master.user_name }}
+                </h1>
+              </ion-card-header>
+              <ion-card-content text-wrap>
+                <h2 class="whitey">
+                  {{ master.user_info }}
+                </h2>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    
+</ion-content>
+  

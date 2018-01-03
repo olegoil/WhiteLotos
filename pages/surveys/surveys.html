@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="viol">
+    <ion-buttons left>
+      <button ion-button icon-end color="light" (click)="toggleMenu()" style="font-size:20px;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <p *ngIf="surveys?.length > 0">
+    <ion-card text-wrap *ngFor="let survey of surveys; let i=index">
+      
+      <ion-card-header *ngIf="survey.asks_name != 0 && survey.asks_name">
+        {{ decodeEntities(survey.asks_name) }}
+      </ion-card-header>
+
+      <ion-card-content *ngIf="survey.asks_message != 0 && survey.asks_message" class="violback">
+        {{ decodeEntities(survey.asks_message) }}
+      </ion-card-content>
+
+      <ion-list radio-group *ngIf="survey.asks_type == '0'" [(ngModel)]="answers[survey.asks_id]">
+        <ion-item *ngFor="let answ of survey.asks_answ; let u=index">
+          <ion-label>{{ decodeEntities(answ) }}</ion-label>
+          <ion-radio value="{{u}}"></ion-radio>
+        </ion-item>
+      </ion-list>
+      
+      <ion-card-content *ngIf="survey.asks_type == '1'">
+        <textarea placeholder="Ваш ответ.." [(ngModel)]="answers[survey.asks_id]" style="padding:15px;width:100%;height:100px;word-wrap: break-word;"></textarea>
+      </ion-card-content>
+
+    </ion-card>
+  </p>
+
+  <ion-card *ngIf="!surveys || surveys?.length == 0">
+    <ion-card-content>
+      В данный момент нет никаких опросов.
+    </ion-card-content>
+  </ion-card>
+
+  <button ion-button block (click)="sendAnswers()" color="viol" *ngIf="surveys?.length > 0">Отправить</button>
+
+  <p>&nbsp;</p>
+
+</ion-content>

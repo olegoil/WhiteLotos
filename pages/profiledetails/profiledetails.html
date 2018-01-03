@@ -1,0 +1,89 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-title>Редактирование</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-begin color="light" (click)="saveProfile()">
+        <span style="font-size:24px;" class="fa fa-floppy-o"></span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <div *ngIf="profiles?.length>0">
+    <ion-grid *ngFor="let profile of profiles" class="form-style-7">
+
+      <ion-row style="border:none;background:none;" justify-content-around>
+        <ion-col col-6 padding-bottom (click)="chImg()">
+          <img src="{{ checkPic(profile.user_pic) }}" />
+          <span style="display:inline-block;bottom:24px;padding:5px;border-radius:50%;background-color:#fff;border:2px solid #000;color:#000;position:absolute;font-size:18px;" class="fa fa-camera"></span>
+        </ion-col>
+      </ion-row>
+
+      <ul>
+        <li>
+            <label for="name">Имя</label>
+            <input type="text" name="name" maxlength="100" value="{{ checkZero(profile.user_name) }}" (keyup)="onKeyName($event)">
+            <span class="info">Внесите Ваше Имя</span>
+        </li>
+        <li>
+            <label for="surname">Фамилия</label>
+            <input type="text" name="surname" maxlength="100" value="{{ checkZero(profile.user_surname) }}" (keyup)="onKeyFam($event)">
+            <span class="info">Внесите Вашу Фамилию</span>
+        </li>
+        <li style="position:relative;display: block;padding: 9px;border:1px solid #DDDDDD;margin-bottom: 30px;border-radius: 3px;" *ngIf="smsConfirmed == '1'">
+            <label for="mobile">Телефон</label>
+            <input style="background-color:#fff;" type="text" name="mobile" maxlength="100" value="{{ checkZero(profile.user_mob) }}" disabled>
+            <span class="info">Ваш Телефон</span>
+        </li>
+        <li style="position:relative;display: block;padding: 9px;border:1px solid #DDDDDD;margin-bottom: 30px;border-radius: 3px;" *ngIf="smsConfirmed != '1'">
+            <label for="mobileconf">Телефон</label>
+            <input type="tel" name="mobileconf" maxlength="100" placeholder="{{ checkZero(profile.user_mob) }}" pattern="\+\d{3} \(\d{2}\) \d{3}-\d{2}-\d{2}" [textMask]="{mask: masks.phoneNumber}" (keyup)="onKeyMob($event)" >
+            <button *ngIf="profile.user_mob.toString()?.length >= 9 && smsOrdered == '0'" ion-button small color="viol" style="position:absolute;top:30%;transform: translateY(-50%);right:10px;" (click)="requestSms(profile)">Подтвердить</button>
+            <button *ngIf="profile.user_mob.toString()?.length >= 9 && smsOrdered != '0'" ion-button small color="viol" style="position:absolute;top:30%;transform: translateY(-50%);right:10px;" (click)="requestSms(profile)">Прислать СМС</button>
+            <span class="info">Внесите Ваш номер телефона</span>
+        </li>
+        <li style="position:relative;display: block;padding: 9px;border:1px solid #DDDDDD;margin-bottom: 30px;border-radius: 3px;" *ngIf="smsConfirmed != '1' && smsOrdered != '0'">
+            <label for="confcode">Код подтверждения</label>
+            <input type="text" name="confcode" maxlength="100" (keyup)="onKeyConf($event)">
+            <button ion-button small color="secondary" (click)="confirmSms(profile)" style="position:absolute;top:30%;transform: translateY(-50%);right:10px;">Подтвердить</button>
+            <span class="info">Код придет по СМС в ближайшее время</span>
+        </li>
+      </ul>
+      <ion-row>
+        <ion-col no-margin no-padding>
+          <ion-label stacked>Дата рождения</ion-label>
+          <ion-datetime displayFormat="DD.MMM.YYYY" doneText="Принять" cancelText="Отмена" [(ngModel)]="profile.user_birthday"></ion-datetime>
+          <span class="info">Внесите Ваш день рождения</span>
+        </ion-col>
+      </ion-row>
+      <ul>
+        <li>
+            <label for="email">Email</label>
+            <input type="text" name="email" maxlength="100" placeholder="{{ checkZero(profile.user_email) }}" [textMask]="{mask: emailMask}" (keyup)="onKeyEmail($event)">
+            <span class="info">Внесите Вашу электронную почту</span>
+        </li>
+        <li>
+            <label for="city">Ваш город</label>
+            <input type="text" name="city" maxlength="100" value="{{ checkZero(profile.user_city) }}" (keyup)="onKeyCity($event)">
+            <span class="info">Выберите Ваш город</span>
+        </li>
+        <li>
+            <label for="bio">О Вас</label>
+            <textarea name="bio" value="{{ checkZero(profile.user_info) }}" (keyup)="onKeyBio($event)"></textarea>
+            <span class="info">Пару слов о Вас</span>
+        </li>
+        <li style="background:none;">
+          <button ion-button icon-begin color="viol" (click)="saveProfile()">
+            <span style="height:20px;width:20px;" class="fa fa-floppy-o"></span> Сохранить
+          </button>
+        </li>
+      </ul>
+
+    </ion-grid>
+  </div>
+
+</ion-content>

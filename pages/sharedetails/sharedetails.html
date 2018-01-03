@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-title>Поделиться</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card style="text-align:center;" *ngFor="let share of sharedetails" class="doubleline" padding>
+    <ion-card-title>
+      Поделитесь своим промокодом с друзьями
+    </ion-card-title>
+    <img style="width:90%;margin:0 auto;" src="assets/img/logo.png"/>
+    <ion-card-content>
+      <h2>Промокод:</h2>
+      <h1>{{ myid }}</h1>
+      <button ion-button full color="viol" (click)="sharePromo()">Поделиться</button>
+    </ion-card-content>
+    <button ion-button clear icon-only color="viol">
+      <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+    <button ion-button clear icon-only color="viol">
+      <ion-icon name="logo-twitter"></ion-icon>
+    </button>
+    <button ion-button clear icon-only color="viol">
+      <ion-icon name="logo-skype"></ion-icon>
+    </button>
+    <button ion-button clear icon-only color="viol">
+      <ion-icon name="logo-instagram"></ion-icon>
+    </button>
+  </ion-card>
+
+</ion-content>

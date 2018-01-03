@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="viol">
+    <ion-title>
+      Контакты
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card no-padding>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-avatar item-start>
+              <img src="assets/img/logo.png">
+          </ion-avatar>
+          <h2>Белый Лотос</h2>
+        </ion-item>
+        <br/>
+        <button ion-item text-wrap color="viol" (click)="call()">
+          <ion-icon name="call" item-start></ion-icon>
+          7579
+        </button>
+        <br/>
+        <button ion-item text-wrap color="viol">
+          <ion-icon name="time" item-start></ion-icon>
+          Ежедневно с 10:00 до 02:00
+        </button>
+        <br/>
+        <button ion-item text-wrap color="viol" (click)="goPath(0)">
+          <ion-icon name="pin" item-start></ion-icon>
+          УЛ. КИРОВА, Д.9
+        </button>
+        <br/>
+        <button ion-item text-wrap color="viol" (click)="goPath(1)">
+          <ion-icon name="pin" item-start></ion-icon>
+          КИРИЛЛА И МЕФОДИЯ, Д.8
+        </button>
+        <br/>
+        <button ion-item text-wrap color="viol" (click)="goMail()">
+          <ion-icon name="mail" item-start></ion-icon>
+          whitelotus2@mail.ru
+        </button>
+        <br/>
+      </ion-list>
+      <agm-map [latitude]="lat" [longitude]="lon" [zoom]="zoom" [zoomControl]="true" [streetViewControl]="false" [disableDefaultUI]="false" [disableDoubleClickZoom]="false" [gestureHandling]="auto" [mapDraggable]="true" [style.height.px]="screenheight">
+        <!-- <agm-marker *ngFor="let inst of institutions" [latitude]="strToNum(inst.lat)" [longitude]="strToNum(inst.lon)" [iconUrl]="inst.img" [label]="inst.adress" (markerClick)="clickedMarker(m.label, i)"></agm-marker> -->
+        <agm-marker *ngFor="let office of offices" [latitude]="strToNum(office.office_lat)" [longitude]="strToNum(office.office_lon)">
+          <agm-info-window  [disableAutoPan]="true">
+            <strong>{{ office.office_adress }}</strong>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+      <br/>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

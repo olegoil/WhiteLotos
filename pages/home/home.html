@@ -1,0 +1,219 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="viol">
+    <ion-buttons left>
+      <button ion-button icon-end color="light" (click)="toggleMenu()" style="font-size:20px;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-begin color="light" (click)="checkPoints()">
+        <h2 style="display:inline-block;font-size:20px;margin:5px;">{{ points }}</h2>
+        <ion-icon style="height:20px;width:20px;" name="custom_star"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-card [@logoSliding]="logoState" class="violback">
+  <img src="assets/img/logo.png"/>
+</ion-card>
+
+<ion-content (ionScroll)="scrollHandler($event)" no-bounce>
+
+  <img class="topback" src="assets/img/caribbean.jpg" *ngIf="profiles?.length>0" />
+
+  <ion-card class="loyalcardback" style="margin-top:-3px;" (click)="goQRCode()" *ngIf="profiles?.length>0">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-12>
+          <ion-row class="vheight20">
+            <ion-col col-4 class="loyaltorch">
+              <div class="leftline"></div>
+              &nbsp;
+            </ion-col>
+            <ion-col col-8 class="backviol">
+              <ion-card class="inloyalcard">
+                <div class="rightline"></div>
+                <ion-card-content no-padding text-wrap class="whitey">
+                  <h3><strong>КАРТА ЛЮБИМОГО КЛИЕНТА</strong></h3>
+                  <p class="whitey">Предъявить карту и<br/>получить баллы</p>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card class="backtransparent" style="margin:8px;" *ngIf="profiles?.length>0">
+    <ion-row>
+      <ion-col>
+          <h2 class="violet">УСЛУГИ И ТОВАРЫ</h2>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card class="backtransparent" *ngIf="profiles?.length>0">
+    <ion-grid no-padding>
+      <ion-row justify-content-around>
+        <ion-col col-5 class="card-background-page" (click)="goSpaRitual()">
+          <img src="assets/img/spa.jpg"/>
+          <div class="card-title everyline">
+            <div class="centering">
+              <ion-icon color="light" name="custom_stones"></ion-icon>
+              <br/>РИТУАЛЫ
+              <br/>&nbsp;
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-5 class="card-background-page" (click)="goGiftCards()">
+          <img src="assets/img/gifts.jpg"/>
+          <div class="card-title everyline">
+            <div class="centering">
+              <ion-icon name="custom_towel"></ion-icon>
+              <br/>ПОДАРОЧНЫЕ
+              <br/>КАРТЫ
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        &nbsp;
+      </ion-row>
+      <ion-row justify-content-around>
+        <ion-col col-5 class="card-background-page" (click)="goSpaProgramm()">
+          <img src="assets/img/order.jpg"/>
+          <div class="card-title everyline">
+            <div class="centering">
+              <ion-icon name="custom_torch"></ion-icon>
+              <br/>СПА
+              <br/>ПРОГРАММЫ
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-5 class="card-background-page" (click)="goContact()">
+          <img src="assets/img/welcome.jpg"/>
+          <div class="card-title everyline">
+            <div class="centering">
+              <ion-icon name="custom_feets"></ion-icon>
+              <br/>НАЙТИ
+              <br/>НАС
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card class="backlotos" *ngIf="profiles?.length>0">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col>
+            <h2 class="whitey">ДЕЛИСЬ С ДРУЗЬЯМИ</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around>
+        <ion-col col-5 class="card-background-page" (click)="goSocial()">
+          <img src="assets/img/placeholder.png"/>
+          <div class="card-title doubleline whitey">
+            <div class="centering">
+              <ion-icon name="custom_vk"></ion-icon>
+              <br/>ВСТУПИТЬ
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-5 class="card-background-page" (click)="goShare()">
+          <img src="assets/img/placeholder.png"/>
+          <div class="card-title doubleline whitey">
+            <div class="centering">
+              <ion-icon name="custom_star"></ion-icon>
+              <br/>ПОЛУЧИТЬ
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card class="backtransparent" style="margin:8px;" *ngIf="profiles?.length>0">
+    <ion-row>
+      <ion-col>
+          <h2 class="violet">ПОДАРКИ ЗА БАЛЛЫ</h2>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card class="backtransparent" *ngIf="firstGift?.length>0">
+    <ion-grid no-padding>
+      <ion-row justify-content-around>
+        <ion-col col-11 class="card-background-page" *ngFor="let gift of firstGift" (click)="goGiftsDetail(gift)">
+          <img src="{{ checkPic(gift.gifts_pic) }}"/>
+          <div class="card-title everyline">
+            <div class="centering">
+              <ion-icon color="light" name="{{ gift.gifts_icon }}" *ngIf="gift.gifts_icon"></ion-icon>
+              <p class="whitey" [innerHTML]="gift.gifts_name"></p>
+              <p class="whitey"><small>первый подарок</small></p>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card class="backtransparent" *ngIf="profiles?.length>0">
+    <ion-grid no-padding>
+      <ion-row justify-content-around>
+        <ion-col col-5 class="card-background-page" *ngFor="let gift of gifts" (click)="goGiftsDetail(gift)">
+          <img src="{{ checkPic(gift.gifts_pic) }}"/>
+          <div class="card-title everyline">
+            <div class="centering">
+              <ion-icon color="light" name="{{ gift.gifts_icon }}"></ion-icon>
+              <p class="whitey" [innerHTML]="gift.gifts_name"></p>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        &nbsp;
+      </ion-row>
+      <ion-row>
+        <button ion-button small clear block color="viol" (click)="goGifts(0)">Еще</button>
+      </ion-row>
+      <ion-row>
+        &nbsp;
+      </ion-row>
+      <ion-row justify-content-around>
+        <ion-col col-11>
+            <button ion-button full color="viol" style="padding-top:30px;padding-bottom:30px;font-weight:bold;" (click)="goSurveys()">ПРОЙТИ ОПРОС</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-card class="backviolet" *ngIf="profiles?.length>0">
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col>
+            <h2 class="whitey">&nbsp;</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around>
+        <ion-col col-5 class="card-background-page" (click)="call()">
+          <img src="assets/img/placeholder.png"/>
+          <div class="card-title doubleline whitey">
+            <div class="centering">
+                <ion-icon name="custom_mobile"></ion-icon>
+                <br/>ПОЗВОНИТЬ
+            </div>
+          </div>
+        </ion-col>
+        <ion-col col-5 class="card-background-page" (click)="goTerms()">
+          <img src="assets/img/placeholder.png"/>
+          <div class="card-title doubleline whitey">
+            <div class="centering">
+                <ion-icon name="custom_leaf"></ion-icon>
+                <br/>ПРАВИЛА
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

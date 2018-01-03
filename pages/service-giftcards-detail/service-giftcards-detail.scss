@@ -1,0 +1,44 @@
+page-service-giftcards-detail {
+    ion-title {
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #fff;
+        pointer-events: auto;
+    }
+    ion-content {
+        background-image: url('../assets/img/pattern.jpg');
+        background-position:center center;
+        background-size: auto 100%;
+    }
+    .whitey {
+        color: #fff;
+    }
+    .card-background-page {
+        
+        ion-card {
+            position: relative;
+            text-align: center;
+        }
+    
+        .card-title {
+            position: absolute;
+            top: 30%;
+            font-size: 2.0em;
+            font-size: 6vw;
+            width: 100%;
+            font-weight: bold;
+            color: #fff;
+        }
+    
+        .card-subtitle {
+            font-size: 1.0em;
+            font-size: 4vw;
+            position: absolute;
+            top: 52%;
+            width: 100%;
+            color: #fff;
+        }
+    
+    }
+}

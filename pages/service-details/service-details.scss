@@ -1,0 +1,17 @@
+page-service-details {
+    ion-title {
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #fff;
+        pointer-events: auto;
+    }
+    ion-content {
+        background-image: url('../assets/img/pattern.jpg');
+        background-position:center center;
+        background-size: auto 100%;
+    }
+    .textshadow {
+        text-shadow: 1px 1px 2px #000;
+    }
+}

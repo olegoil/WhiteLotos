@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar color="viol">
+    <ion-title>
+      Сумма
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-begin color="light" (click)="calcbill()">
+        Далее
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding scroll="false">
+  
+  <div class="violback list2bottom" style="padding-top:50px;padding-bottom:20px;">
+
+  <ion-card class="backtransparent">
+    <ion-grid no-padding>
+      <ion-row justify-content-around>
+        <ion-col style="text-align: center;">
+          <h6 class="whitey" style="margin:0 auto;font-size:13px;">Укажите потраченную сумму</h6>
+          <h1 class="whitey" style="font-size:40px;margin-bottom:0px;padding-bottom:0px;">{{ expression }}</h1>
+          <h4 class="whitey" style="font-size:13px;padding-top:0px;margin-top:0px;">руб</h4>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around>
+        <ion-col col-4 class="bordtop">
+          <button ion-button clear full color="violcontr" (click)="addVal(1)">1</button>
+        </ion-col>
+        <ion-col col-4 class="bordleftrighttop">
+          <button ion-button clear full color="violcontr" (click)="addVal(2)">2</button>
+        </ion-col>
+        <ion-col col-4 class="bordtop">
+          <button ion-button clear full color="violcontr" (click)="addVal(3)">3</button>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around>
+        <ion-col col-4 class="bordtop">
+          <button ion-button clear full color="violcontr" (click)="addVal(4)">4</button>
+        </ion-col>
+        <ion-col col-4 class="bordleftrighttop">
+          <button ion-button clear full color="violcontr" (click)="addVal(5)">5</button>
+        </ion-col>
+        <ion-col col-4 class="bordtop">
+          <button ion-button clear full color="violcontr" (click)="addVal(6)">6</button>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around>
+        <ion-col col-4 class="bordtop">
+          <button ion-button clear full color="violcontr" (click)="addVal(7)">7</button>
+        </ion-col>
+        <ion-col col-4 class="bordleftrighttop">
+          <button ion-button clear full color="violcontr" (click)="addVal(8)">8</button>
+        </ion-col>
+        <ion-col col-4 class="bordtop">
+          <button ion-button clear full color="violcontr" (click)="addVal(9)">9</button>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around>
+        <ion-col col-4 class="bordtopbottom">
+          <button ion-button clear full color="violcontr"></button> 
+        </ion-col>
+        <ion-col col-4 class="bordleftrighttopbottom">
+          <button ion-button clear full color="violcontr" (click)="addVal(0)">0</button>
+        </ion-col>
+        <ion-col col-4 class="bordtopbottom">
+          <button ion-button clear full color="violcontr" (click)="removeText()">
+            <ion-icon name="backspace"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  </div>
+
+</ion-content>

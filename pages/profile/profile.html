@@ -1,0 +1,78 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-buttons left>
+      <button ion-button icon-end color="light" (click)="toggleMenu()" style="font-size:20px;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Личный кабинет</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card class="backtransparent" *ngFor="let profile of profiles">
+    <ion-grid no-padding>
+      <ion-row justify-content-around>
+        <ion-col col-8 padding class="card-background-page" (click)="goProfileDetails(profile)">
+          <img src="{{ checkPic(profile.user_pic) }}" />
+          <div class="card-title doubleline whitey">
+            <div class="centering">
+              &nbsp;
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around class="nopadd">
+        <ion-col col-8>
+          <h2>{{ checkZero(profile.user_name) }}</h2>
+          <h2>{{ checkZero(profile.user_surname) }}</h2>
+          <p *ngIf="visited?.length==0">Еще не был в "Белый Лотос"</p>
+          <p *ngIf="visited?.length>0">Был последний раз {{ visited }}</p>
+        </ion-col>
+        <ion-col col-2>
+          &nbsp;
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around class="nopadd">
+        <ion-col col-8>
+          <p>Мой промокод</p>
+          <h2>{{ profile.user_real_id }}</h2>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button clear icon-only large (click)="goProfileDetails(profile)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row justify-content-around *ngIf="promobtn != 1 && promobtn < 4">
+        <ion-col>
+          <button ion-button color="viol" (click)="enterPromo()">Задать промокод</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-list *ngIf="ordersAll?.length > 0">
+    <ion-item *ngFor="let order of ordersAll">
+      <ion-thumbnail item-start>
+        <img src="{{ checkPic(order.order_worker_pic_phone) }}">
+      </ion-thumbnail>
+      <h2>{{ order.order_name }}</h2>
+      <p>
+        в {{ formatTime(order.order_start) }}
+        <button ion-button clear *ngIf="order.order_status == 0" color="viol">Ожидает подтверждение</button>
+        <button ion-button clear *ngIf="order.order_status == 1" color="primary">Подтверждено</button>
+        <button ion-button clear *ngIf="order.order_status == 2" color="secondary">Подтверждено</button>
+        <button ion-button clear *ngIf="order.order_status == 3" color="danger">Отклоненно</button>
+        <button ion-button clear *ngIf="order.order_status == 4" color="danger">Отмененно пользователем</button>
+      </p>
+      <button ion-button clear item-end color="danger" (click)="beforeCancelOrder(order.order_id)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

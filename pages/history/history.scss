@@ -1,0 +1,50 @@
+page-history {
+    
+    ion-content {
+        background-image: url('../assets/img/order.jpg');
+        background-position:center center;
+        background-size: auto 100%;
+    }
+    ion-item {
+        background: none !important;
+    }
+    ion-card {
+        background: none !important;
+        box-shadow: none !important;
+    }
+    .backviolet {
+        background-color: #524976;
+        text-align: center;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+        padding-bottom: 20px;
+    }
+    .violback {
+        background-color: rgba(82, 73, 118, 0.9) !important;
+    }
+    .violethalf {
+        color: #85799A;
+    }
+    .whitey {
+        color: #fff;
+    }
+    .golds2 {
+        color: #D5A776;
+    }
+    .everyline {
+        outline: 2px solid #fff;
+        outline-offset: -10px;
+    }
+    .doubleline {
+        border: 2px solid #fff;
+        outline: 2px solid #fff;
+        outline-offset: -10px;
+    }
+    .oneline {
+        border: 2px solid #fff;
+        padding: 5px;
+    }
+
+}

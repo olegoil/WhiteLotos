@@ -1,0 +1,62 @@
+<ion-header no-border>
+  <ion-navbar color="viol">
+    <ion-title>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding no-bounce>
+
+  <div class="violback" style="min-height:100%;padding-bottom:10px;padding-top:10px;">
+
+    <ion-card style="width:100%;margin:0;" *ngIf="history?.length>0 && masters?.length>0 && grouped?.length > 0">
+      <ion-grid no-padding no-margin *ngFor="let histor of history">
+        <ion-row justify-content-around style="background-color: #fff;width:100%;" *ngIf="officeadress && histor.order_name">
+            <button ion-button small color="goldy">{{ officeadress }}</button>
+            <button ion-button small clear color="golds">{{ histor.order_name }}</button>
+        </ion-row>
+        <ion-list no-border text-wrap>
+          <ion-item>
+            <ion-thumbnail item-start class="oneline">
+              <img src="{{ checkPic(histor.order_worker_pic_phone) }}">
+            </ion-thumbnail>
+            <h2>
+              <span class="violethalf" *ngIf="histor.order_worker_profession_phone && histor.order_worker_profession_phone != '0'">{{ histor.order_worker_profession_phone }}:</span>
+              <span class="whitey" *ngIf="histor.order_worker_name_phone && histor.order_worker_name_phone != '0'">{{ histor.order_worker_name_phone }}</span>
+              <span class="violethalf" *ngIf="!histor.order_worker_profession_phone || histor.order_worker_profession_phone == '0'">Не определенно:</span>
+              <span class="whitey" *ngIf="!histor.order_worker_name_phone || histor.order_worker_name_phone == '0'">Не определенно</span>
+            </h2>
+            <button ion-button clear icon-only large item-end color="golds" (click)="masterDetails()" *ngIf="histor.order_worker_name_phone && histor.order_worker_name_phone != '0' && histor.order_worker_profession_phone && histor.order_worker_profession_phone != '0'"><ion-icon name="ios-information-circle-outline"></ion-icon></button>
+          </ion-item>
+        </ion-list>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card style="width:100%;margin:0;" *ngIf="grouped?.length > 0 && history?.length>0 && masters?.length>0">
+      <ion-grid no-padding no-margin>
+        
+        <ion-list no-border text-wrap *ngFor="let group of grouped">
+          <ion-item text-wrap>
+
+            <h2 class="golds2">{{ group.dayday }}</h2>
+            
+            <button style="border-radius:0px;margin:5px;min-width:20vw;" ion-button default [outline]="time.user_unixtime != selunixtime" color="violcontr" *ngFor="let time of group.times" (click)="entryRequest(time.user_daytime, time.user_unixtime)">
+                {{ time.user_daytime | timepoints }}
+            </button>
+
+            <p>&nbsp;</p>
+            
+          </ion-item>
+        </ion-list>
+
+      </ion-grid>
+    </ion-card>
+
+    <ion-card style="width:100%;padding-bottom:10px;" *ngIf="history?.length==0 || masters?.length==0">
+      <h1 text-wrap text-center style="color:#fff;">У Вас нет записей.</h1>
+    </ion-card>
+
+  </div>
+
+</ion-content>
+    

@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-title [innerHTML]="gifts[0].gifts_name"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngFor="let gift of gifts">
+    <img src="{{ checkPic(gift.gifts_pic) }}">
+    <ion-card-content>
+      <ion-card-title [innerHTML]="gift.gifts_name"></ion-card-title>
+      <p [innerHTML]="gift.gifts_desc"></p>
+      <br/>
+      <h2>Стоимость: {{ gift.gifts_points }} баллов</h2>
+    </ion-card-content>
+    <div *ngIf="createdCode">
+      <!-- <button ion-button block color="viol">Получить</button> -->
+      <ngx-qrcode [qrc-value]="createdCode" qrc-errorCorrectionLevel="Q"></ngx-qrcode>
+    </div>
+  </ion-card>
+
+</ion-content>

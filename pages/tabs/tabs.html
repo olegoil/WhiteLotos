@@ -1,0 +1,12 @@
+<ion-header no-border>
+  <ion-navbar color="viol">
+    <ion-title>
+      Ближайшее время
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content no-padding no-bounce style="top:0;margin-top:0;background-image: url('assets/img/pattern.jpg');background-position:center center;background-size: auto 100%;">
+  <super-tabs *ngIf="masters?.length > 0" (swipe)="onSwipe($event)" scrollTabs="true" id="mainTabs" selectedTabIndex="{{currentTab}}" toolbarColor="viol" toolbarBackground="" indicatorColor="oran" badgeColor="viol" (tabSelect)="onTabSelect($event)" class="withNavbar" no-border no-shadow>
+    <super-tab *ngFor="let office of offices" [root]="tab1Root" [rootParams]="{office: office, masters: selEarliest(office.office_id), menuecat: menuecat}" id="{{office.office_id}}" title="{{office.office_adress}}"></super-tab>
+  </super-tabs>
+</ion-content>

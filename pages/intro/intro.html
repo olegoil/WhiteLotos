@@ -1,0 +1,47 @@
+<ion-header no-border>
+  <ion-navbar>
+    <!-- <ion-buttons left>
+      <button ion-button icon-end color="light" (click)="toggleMenu()" style="font-size:20px;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-title>
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-begin color="light" (click)="checkPoints()">
+        <h2 style="display:inline-block;font-size:20px;margin:5px;">{{ points }}</h2>
+        <ion-icon style="height:20px;width:20px;" name="custom_star"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+
+  <ion-grid class="violback">
+    <ion-row>
+      <ion-col text-center>
+        <ion-card class="backtransparent">
+          <img src="assets/img/logo.png"/>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+<ion-footer class="backtransparent" no-padding no-border no-shadow>
+  <ion-toolbar class="backtransparent">
+    <ion-grid class="backtransparent">
+      <ion-row class="backtransparent">
+        <ion-col>
+            <button ion-button block color="goldy" (click)="goRituals()">Записаться</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <button ion-button block color="goldy" (click)="goHome()">Карта клиента</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-title>Техподдержка</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding fixed scrollDownOnLoad="true" (tap)="contentMouseDown($event)" ionScrollEnd="hideKeybaord()">
+
+  <ion-list no-lines tappable>
+    <ion-item *ngFor="let msg of messages" >
+      <div class="chatBubble">
+        <img class="profile-pic {{msg.position}}" src="{{msg.img}}">
+        <div class="chat-bubble {{msg.position}}">
+          <div class="message">{{msg.content}}</div>
+          <div class="message-detail">
+              <span style="font-weight:bold;">{{msg.senderName}} </span>,
+              <span>{{msg.time}}</span>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <!-- <div item-content style="width:100%;">
+
+    <ion-textarea spellcheck="on" autocomplete="true" placeholder="Ваше сообщение.." lineHeight="lineHeight" [(ngModel)]="message"></ion-textarea>
+    <ion-buttons right>
+      <button style="min-width:45px;" (click)="sendMessage()">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </div> -->
+
+</ion-content>
+
+<ion-footer (touchstart)="footerTouchStart($event)">
+  <ion-toolbar>
+
+    <ion-buttons left>
+      <button class="add-image-button" item-right (touchstart)="touchImageButton($event)">
+        <ion-icon class="add-image-icon" name="images"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <textarea spellcheck="true" autoComplete="on" autocorrect="on" (ngModelChange)="textAreaChange()" rows="1" fz-elastic class="chat-input" [(ngModel)]="message" placeholder="Ваше сообщение.." (keyup.enter)="sendMessage()"></textarea>
+
+    <ion-buttons right>
+      <button [disabled]="!message" class="send-button" item-right id="send-button" (touchstart)="touchSendButton($event)">
+        <ion-icon class="send-icon" name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-footer>

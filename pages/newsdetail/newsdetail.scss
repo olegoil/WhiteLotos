@@ -1,0 +1,14 @@
+page-newsdetail {
+    ion-title {
+        text-align: center;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #fff;
+        pointer-events: auto;
+    }
+    ion-content {
+        background-image: url('../assets/img/pattern.jpg');
+        background-position:center center;
+        background-size: auto 100%;
+    }
+}

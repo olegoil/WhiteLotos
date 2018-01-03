@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-title [innerHTML]="news[0].news_name"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngFor="let new of news">
+    <img src="{{ checkPic(new.news_pic) }}">
+    <ion-card-content>
+      <ion-card-title [innerHTML]="new.news_name"></ion-card-title>
+      <p [innerHTML]="new.news_message"></p>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

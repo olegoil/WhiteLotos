@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="viol">
+    <ion-title>Подарки</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <ion-card class="backtransparent">
+      <ion-grid no-padding>
+        <div *ngFor="let gift of gifts; let i=index">
+          <ion-row justify-content-around margin-bottom *ngIf="i % 2 === 0">
+            <ion-col col-5 class="card-background-page" (click)="goGiftsDetail(gifts[i])" *ngIf="i < gifts.length">
+              <img src="{{ checkPic(gifts[i].gifts_pic) }}"/>
+              <div class="card-title everyline">
+                <div class="centering" [innerHTML]="gifts[i].gifts_name"></div>
+              </div>
+            </ion-col>
+            <ion-col col-5 class="card-background-page" (click)="goGiftsDetail(gifts[i+1])" *ngIf="i + 1 < gifts.length">
+              <img src="{{ checkPic(gifts[i+1].gifts_pic) }}"/>
+              <div class="card-title everyline">
+                <div class="centering" [innerHTML]="gifts[i+1].gifts_name"></div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-grid>
+    </ion-card>
+
+</ion-content>

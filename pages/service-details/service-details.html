@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="viols">
+    <ion-title [innerHtml]="services[0].menue_name"></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+
+  <ion-card *ngFor="let service of services">
+    <img src="{{ checkPic(service.menue_pic) }}"/>
+    <ion-card-content padding>
+      <ion-card-title uppercase [innerHtml]="service.menue_name"></ion-card-title>
+      <ion-row>
+        <ion-col>
+          от {{ priceConvert(service.menue_cost) }} BYN
+          <br/>
+          <ion-note>цена</ion-note>
+        </ion-col>
+        <ion-col>
+          {{ service.menue_interval }}
+          <br/>
+          <ion-note>продолжительность сеанса</ion-note>
+        </ion-col>
+      </ion-row>
+      <p [innerHtml]="service.menue_desc"></p>
+      <!-- <button ion-button block (click)="mkOrder(service.menue_id)" color="viol">Записаться</button> -->
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

@@ -1,0 +1,12 @@
+page-sharedetails {
+    ion-content {
+        background-image: url('../assets/img/pattern.jpg');
+        background-position:center center;
+        background-size: auto 100%;
+    }
+    .doubleline {
+        border: 2px solid #524976;
+        outline: 2px solid #524976;
+        outline-offset: -10px;
+    }
+}
